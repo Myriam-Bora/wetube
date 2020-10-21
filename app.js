@@ -16,8 +16,8 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(helmet());
 
-app.use(routes.home, globalRouter);   //login 등..
-app.use(routes.users, userRouter);
-app.use(routes.videos, videoRouter);
+app.use(routes.home, globalRouter);   // / , /login... 등..
+app.use(routes.users, userRouter);    // /users/userDetail 등
+app.use(routes.videos, videoRouter);  // /videos/deleteVideo 등
 
 export default app;

@@ -1,12 +1,15 @@
 import express from "express";
+import { joinController, loginController, logoutController } from "../controllers/userController";
+import { homeController, searchController } from "../controllers/videoController";
 import routes from "../routes";
 
 const globalRouter = express.Router(); 
 
-globalRouter.get(routes.home, (req,res) => res.send("Home!"));
-globalRouter.get(routes.join, (req,res) => res.send("join!"));
-globalRouter.get(routes.logout, (req,res) => res.send("logout!"));
-globalRouter.get(routes.login, (req,res) => res.send("login!"));
-globalRouter.get(routes.search, (req,res) => res.send("search!"));
+// 각 controller에서 export한 객체 사용
+globalRouter.get(routes.home, homeController);
+globalRouter.get(routes.join, joinController);
+globalRouter.get(routes.logout, logoutController);
+globalRouter.get(routes.login, loginController);
+globalRouter.get(routes.search, searchController);
 
 export default globalRouter;

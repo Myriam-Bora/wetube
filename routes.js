@@ -10,15 +10,15 @@ const SEARCH = "/search";
 //users
 const USERS = "/users";
 const USER_DETAIL = "/:id";  // :id   express가 바뀌는 url임을 인식
-const EDIT_PROFILE = "/editProfile";
-const CHANGE_PASSWORD = "/changePassword";
+const EDIT_PROFILE = "/edit-profile";
+const CHANGE_PASSWORD = "/change-password";
 
 //videod
-const VIDEOS = "/videos";
-const UPLOAD = "/upload";
+const VIDEOS = "/videos";    //   /videos/videos
+const UPLOAD = "/upload";    //   /videos/upload
 const VIDEO_DETAIL = "/:id";
-const EDIT_VIDEO = "/editVideo";
-const DELETE_VIDEO = "/deleteVideo";
+const EDIT_VIDEO = "/:id/edit-video";
+const DELETE_VIDEO = "/:id/delete-video";
 
 const routes = {
     home: HOME,
