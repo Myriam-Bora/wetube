@@ -13,7 +13,7 @@ const USER_DETAIL = "/:id";  // :id   express가 바뀌는 url임을 인식
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 
-//videod
+//videos
 const VIDEOS = "/videos";    //   /videos/videos
 const UPLOAD = "/upload";    //   /videos/upload
 const VIDEO_DETAIL = "/:id";
