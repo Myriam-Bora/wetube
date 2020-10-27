@@ -1,0 +1,7 @@
+//- mixin : 같은 구조, 다른 정보를 위해 사용
+//- 인자(video)가 하나 필요, 기본값은 { } 빈 객체
+//- mixin에 인자가 입력되면 객체이름은 video가 된다
+mixin videoBlock(video = {})
+    video.videoBlock__thumbnail(src=video.videoFile,controls=true)
+    h4.videoBlock__title=video.title
+    h6.videBlock__views=video.views

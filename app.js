@@ -11,6 +11,10 @@ import routes from "./routes";
 
 const app = express();
 
+app.use(function(req, res, next) {
+    res.setHeader("Content-Security-Policy", "script-src 'self' https://archive.org");
+    return next();
+});
 app.use(helmet());
 app.set("view engine", "pug") //  view에 해당하는 확장자를 pug로 설정
 
