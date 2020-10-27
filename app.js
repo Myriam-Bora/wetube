@@ -21,6 +21,7 @@ app.use(morgan("dev"));
 
 app.use(localsMiddleware);
 
+//이곳에서 users , videos, / 을 붙이게 된다
 app.use(routes.home, globalRouter);   // / , /login... 등..
 app.use(routes.users, userRouter);    // /users/userDetail 등
 app.use(routes.videos, videoRouter);  // /videos/deleteVideo 등

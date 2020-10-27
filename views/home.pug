@@ -2,4 +2,5 @@ extends layouts/main
 
 block content   
     .videos
-        h1 Video
+        each video in videos   //video : each을 돌릴때 담을 변수이름. 어떤 이름이름 상관없다
+            h1= video.title

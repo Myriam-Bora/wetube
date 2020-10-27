@@ -4,10 +4,9 @@ import {videosController,uploadController,videoDetailController,editVideoControl
 
 const videoRouter = express.Router();  //다른 곳에서 임포트 하기 위해 export
 
-videoRouter.get(routes.videos, (req,res) => res.send("videos!"));
-videoRouter.get(routes.upload, (req,res) => res.send("upload!"));
-videoRouter.get(routes.editVideo, (req,res) => res.send("editVideo!")); //videoDetail 보다 먼저 인식시키기 위해 videoDetail을 아래로 내림
-videoRouter.get(routes.deleteVideo, (req,res) => res.send("deleteVideo!"));
-videoRouter.get(routes.videoDetail, (req,res) => res.send("videoDetail!"));
+videoRouter.get(routes.upload, uploadController);
+videoRouter.get(routes.editVideo, editVideoController); //videoDetail 보다 먼저 인식시키기 위해 videoDetail을 아래로 내림
+videoRouter.get(routes.deleteVideo,deleteVideoController);
+videoRouter.get(routes.videoDetail,videoDetailController);
 
 export default videoRouter;

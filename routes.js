@@ -2,16 +2,16 @@
 
 //global
 const HOME = "/";
-const JOIN = "/join";
-const LOGIN = "/login";
+const JOIN = "/join";    //  /join
+const LOGIN = "/login";  //  /login
 const LOGOUT = "/logout";
 const SEARCH = "/search";
 
 //users
 const USERS = "/users";
 const USER_DETAIL = "/:id";  // :id   express가 바뀌는 url임을 인식
-const EDIT_PROFILE = "/edit-profile";
-const CHANGE_PASSWORD = "/change-password";
+const EDIT_PROFILE = "/edit-profile";  // /users/edit-profile
+const CHANGE_PASSWORD = "/change-password"; // /users/change-password
 
 //videos
 const VIDEOS = "/videos";    //   /videos/videos
