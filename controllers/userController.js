@@ -19,9 +19,17 @@ export const postJoinController = (req,res) =>   {
     }
 }
 
-export const loginController = (req,res) => res.render("login",{
+export const getLoginController = (req,res) => res.render("login",{
     pageTitle:"Login"
 })
+
+export const postLoginController = (req,res) => {
+    res.redirect(routes.home);
+
+    res.render("login",{
+    pageTitle:"Login"
+    })
+}
 
 export const logoutController = (req,res) => res.render("logout",{
     pageTitle:"Logout"
