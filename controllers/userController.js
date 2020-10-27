@@ -1,7 +1,40 @@
-export const joinController = (req,res) => res.render("join")
-export const loginController = (req,res) => res.render("login")
-export const logoutController = (req,res) => res.render("logout")
-export const usersController = (req,res) => res.render("users")
-export const userDetailController = (req,res) => res.render("userDetail")
-export const editProfileController = (req,res) => res.render("editProfile")
-export const changePasswordController = (req,res) => res.render("changePassword")
+import routes from "../routes";
+
+export const getJoinController = (req,res) => res.render("join",{
+    pageTitle:"Join"
+
+})
+
+export const postJoinController = (req,res) =>   {
+    console.log(req.body);
+    const {body:{name,email,password,password2}} = req;  // const {name,email,password,password2} = req.body.name ....
+    
+    if(password2 !== password){
+        res.status(400);
+        res.render("join",{
+            pageTitle:"Join"
+        })
+    }else{
+        res.redirect(routes.home);
+    }
+}
+
+export const loginController = (req,res) => res.render("login",{
+    pageTitle:"Login"
+})
+
+export const logoutController = (req,res) => res.render("logout",{
+    pageTitle:"Logout"
+})
+
+export const userDetailController = (req,res) => res.render("userDetail",{
+    pageTitle:"User Detail"
+})
+
+export const editProfileController = (req,res) => res.render("editProfile",{
+    pageTitle:"Edit Profile"
+})
+
+export const changePasswordController = (req,res) => res.render("changePassword",{
+    pageTitle:"Change Password"
+})

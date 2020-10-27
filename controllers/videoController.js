@@ -10,7 +10,11 @@ export const homeController = (req,res) =>{
 export const searchController = (req,res) => {
     const {query : {term : searchingBy}} = req;     
     console.log(searchingBy)
-    res.render("search" , {pageTitle:"Search", searchingBy:searchingBy})
+    res.render("search" , {
+        pageTitle:"Search", 
+        searchingBy:searchingBy,
+        videos
+    })
 }
 
 export const uploadController = (req,res) => res.render("upload", {pageTitle:"Upload Video"});
