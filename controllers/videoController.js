@@ -1,11 +1,17 @@
-
+import Video from "../models/Video";
 import routes from "../routes";
 
-export const homeController = (req,res) =>{ 
+export const homeController = async (req,res) =>{ 
+    try{
+    const videos = await Video.find({});        //find():데이터베이스에 있는 모든 비디오를 찾는다
     res.render("home", {
         pageTitle:"Home", 
         videos
     })
+    }catch(error){
+        console.log(error);
+        res.render("home", {pageTitle:"Home", videos:[] })  //에러가 있으면 비어있는 비디오 목록을 보여준다
+    }
 } 
 
 export const searchController = (req,res) => {
