@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-mongoose.connect("mongodb://localhost:27017/wetube",
+dotenv.config();   //.evn에 있는 정보를 가져올 수 있다
+
+//process.env.key 에 정보를 저장
+mongoose.connect(process.env.MONGO_URL,
 {
     //기본설정
     useNewUrlParser:true,
