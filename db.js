@@ -1,50 +1,16 @@
-export const videos = [
-    {
-        id:324393,
-        title:"Video awesome",
-        description:"This is something I like",
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator:{
-            id:121212,
-            name:"Nicolas",
-            email:"nico@las.com"
-        }
-    },
-    {
-        id:4,
-        title:"Video nice",
-        description:"This is something I love",
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator:{
-            id:121212,
-            name:"Nicolas",
-            email:"nico@las.com"
-        }
-    },
-    {
-        id:3393,
-        title:"Video good",
-        description:"This is something I want",
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator:{
-            id:121212,
-            name:"Nicolas",
-            email:"nico@las.com"
-        }
-    },
-    {
-        id:9,
-        title:"Video ex",
-        description:"This is something I love",
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator:{
-            id:121212,
-            name:"Nicolas",
-            email:"nico@las.com"
-        }
-    }
-]
+import mongoose from "mongoose";
+
+mongoose.connect("mongodb://localhost:27017/wetube",
+{
+    //기본설정
+    useNewUrlParser:true,
+    userFindAndModify:false
+}
+)
+
+//mongoDB와의 연결을 db에 저장
+const db = mongoose.connection;
+const handleOpen = () => console.log("✅ Connected to DB")
+const handleError = () => console.log(`❌Error on DB Connection: ${error}`)
+db.once("open", handleOpen);   //디비 연결은 once (=한번) 사용
+db.on("error",handleError );   //여러개의 오류는  on(=여러번) 사용
