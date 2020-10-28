@@ -27,10 +27,9 @@ const routes = {
     logout:LOGOUT,
     search:SEARCH,
     users:USERS,
-    // html에서 :id 는 인식을 못하기 때문에  url에 id가 들어가도록 해준다
     userDetail: (id) =>{
         if(id){
-            return `users/${id}`
+            return `/users/${id}`
         }else{
             return USER_DETAIL;
         }
@@ -39,7 +38,13 @@ const routes = {
     changePassword:CHANGE_PASSWORD,
     videos:VIDEOS,
     upload:UPLOAD,
-    videoDetail:VIDEO_DETAIL,
+    videoDetail:(id)=>{
+        if(id){
+            return `/videos/${id}`
+        }else{
+            return VIDEO_DETAIL
+        }
+    },
     editVideo:EDIT_VIDEO,
     deleteVideo:DELETE_VIDEO
 };

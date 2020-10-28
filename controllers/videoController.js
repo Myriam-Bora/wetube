@@ -1,4 +1,5 @@
 import {videos} from "../db"
+import routes from "../routes";
 
 export const homeController = (req,res) =>{ 
     res.render("home", {
@@ -17,7 +18,12 @@ export const searchController = (req,res) => {
     })
 }
 
-export const uploadController = (req,res) => res.render("upload", {pageTitle:"Upload Video"});
+export const getUploadController = (req,res) => res.render("upload", {pageTitle:"Upload Video"});
+export const postUploadController = (req,res) => {
+    res.redirect(routes.videoDetail(324393));
+    res.render("upload", 
+    {pageTitle:"Upload Video"}
+    )};
 
 export const videoDetailController = (req,res) => res.render("videoDetail", {pageTitle:"Video Detail"});
 
