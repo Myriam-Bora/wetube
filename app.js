@@ -18,6 +18,9 @@ app.use(function(req, res, next) {
 app.use(helmet());
 app.set("view engine", "pug") //  view에 해당하는 확장자를 pug로 설정
 
+// /uploads 페이지를 요청하면  uploads/  안에 file을 보내주는 미들웨어
+// 컨트롤러나 뷰는 확인 하지 않는다
+app.use("/uploads", express.static("uploads"));   
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extends:true}));
