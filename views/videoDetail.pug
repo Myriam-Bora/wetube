@@ -1,4 +1,16 @@
 extends layouts/main
 
 block content   
-    p video detail
+    .video__player
+        video(src=`/${video.fileUrl}`)
+    .video__info
+        a(href=routes.editVideo) Edit Video
+        p.video__info__title=video.title
+        span.video__info__views=video.views
+        h6.video__info__description=video.description    
+        
+        
+        
+        
+        
+        //-  =  : 변수가 가르키고 있는 값으로 변환!

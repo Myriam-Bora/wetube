@@ -45,7 +45,16 @@ export const postUploadController = async(req,res) => {
     res.redirect(routes.videoDetail(newVideo.id));   //id는 자동으로 만들어진다
 }
 
-export const videoDetailController = (req,res) => res.render("videoDetail", {pageTitle:"Video Detail"});
+export const videoDetailController = async (req,res) =>{ 
+    const {params:{id}} = req;   //a태그로 받은 video.id를 id에 담는다
+
+    try{
+        const video = await Video.findById(id);      //Video: 모델, 아이디에 해당되는 비디오를 찾아 video에 담는다
+        res.render("videoDetail", {pageTitle:"Video Detail", video})
+    }catch(error){
+    res.redirect(routes.home)
+    }
+};
 
 export const editVideoController = (req,res) => res.render("editVideo", {pageTitle:"Edit Video"});
 
