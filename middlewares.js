@@ -1,4 +1,8 @@
 import routes from "./routes";
+import multer from "multer";
+
+//업로드를 하면 서버에 있는 폴더(=videos)에 올라간다
+const multerVideo = multer({dest:'videos/'})
 
 // 변수를  local 함수에 담아서 모든 템플릿(뷰,레이아웃 pug..)에서도 해당 변수를 사용 할 수 있게 만든다
 export const localsMiddleware = (req,res,next) =>{
@@ -10,3 +14,7 @@ export const localsMiddleware = (req,res,next) =>{
     };
     next();  //local안에서 다음 함수로 넘기기위한 함수
 }
+
+export const uploadVideo = multerVideo.single('videoFile'); 
+//videoFile : upload form 에서 보낸 name
+// single : 하나의 파일만 업로드 할 수 있게 한다
