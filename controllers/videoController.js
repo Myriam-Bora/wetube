@@ -14,15 +14,23 @@ export const homeController = async (req,res) =>{
     }
 } 
 
-export const searchController = (req,res) => {
-    const {query : {term : searchingBy}} = req;     
-    console.log(searchingBy)
-    res.render("search" , {
-        pageTitle:"Search", 
-        searchingBy:searchingBy,
-        videos
-    })
-}
+export const searchController = async(req,res) => {
+    const {query : {term : searchingBy}} = req;   
+    let videos = [];                    //처음은 배열이 비어 있음  
+    
+    try{
+        videos = await Video.find(
+            { title:{ $regex : searchingBy ,  $options : "i" }});
+            // $regex : 포함된 단어만 find  ,  $options : 검색 옵션. i는 대/소문자 구별 x
+        res.render("search" , {
+            pageTitle:"Search", 
+            searchingBy,
+            videos                  //검색 후 배열
+            });
+    }catch(error){
+        console.log(error)
+    } 
+}   
 
 export const getUploadController = (req,res) => res.render("upload", {pageTitle:"Upload Video"});
 export const postUploadController = async(req,res) => {
