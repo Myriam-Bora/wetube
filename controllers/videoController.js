@@ -53,7 +53,6 @@ export const videoDetailController = async (req,res) =>{
     try{
         const video = await Video.findById(id);      //Video: 모델, 아이디에 해당되는 비디오를 찾아 video에 담는다
         res.render("videoDetail", {pageTitle:"Video Detail", video})
-        console.log(video);
     }catch(error){
     res.redirect(routes.home)
     }
@@ -71,6 +70,17 @@ export const getEditVideoController = async (req,res) => {
 }
 
 //작성 후 update video
-export const postEditVideoController = (req,res) => res.render("editVideo", {pageTitle:"Edit Video"});
+export const postEditVideoController = async(req,res) => {
+    const {
+        params:{id},
+        body:{title,description}
+    } = req;
+    try{
+        await Video.findOneAndUpdate({_id:id},{title,description});
+        res.redirect(routes.videoDetail(id));
+    }catch(error){
+        res.redirect(routes.home);
+    }
+}
 
 export const deleteVideoController = (req,res) => res.render("deleteVideo", {pageTitle:"Delete Video"});
