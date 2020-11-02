@@ -17,10 +17,14 @@
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
-    "pug": "^3.0.0"
+    "pug": "^3.0.0",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node init.js --delay 2"
+    "dev:server": "nodemon --exec babel-node init.js --delay 2",
+    "dev:assets": "WEBPACK_ENV=development webpack",
+    "build:assets": "WEBPACK_ENV=production webpack" 
   },
   "devDependencies": {
     "eslint": "^7.12.1",
