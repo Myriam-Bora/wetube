@@ -14,10 +14,19 @@ const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
-    entry : ENTRY_FILE,
+    devtool:"cheap-module-source-map",     //브라우저창 콘솔에러 Uncaught EvalError 해결을 위한 코드.
+    entry : ["@babel/polyfill",ENTRY_FILE],
     mode:MODE,
     module:{
         rules:[
+            {
+                test:/\.(js)$/,
+                use:[
+                    {
+                        loader: "babel-loader"
+                    }
+                ]
+            },
             {
                 test: /\.(scss)$/,              //조건 : scss을 만나게 되면, 아래와 같은 플러그인을 사용한다
                 use:ExtractCSS.extract([     //내부에 또 다른 플러그인을 사용하고 있다, 아래 단계가 끝나면 css를 텍스트로 추출
@@ -27,9 +36,11 @@ const config = {
                     {
                         loader:"postcss-loader", //아래에서 받은 것들을  css로 변환
                         options:{
-                            plugin(){
-                                return [autoprefixer({browsers:"cover 99.5%"})] 
-                                 //옵션 설정 모든 브라우저에서 99.5% 호환되게 만들어준다
+                            postcssOptions:{
+                                plugins(){
+                                    return [autoprefixer({browsers:"cover 99.5%"})] 
+                                     //옵션 설정 모든 브라우저에서 99.5% 호환되게 만들어준다
+                                }
                             }
                         }
                     },
