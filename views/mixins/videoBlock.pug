@@ -2,7 +2,11 @@
 //- 인자(video)가 하나 필요, 기본값은 { } 빈 객체
 //- mixin에 인자가 입력되면 객체이름은 video가 된다
 mixin videoBlock(video = {})
-    a(href=routes.videoDetail(video.id))
-        video.videoBlock__thumbnail(src=video.videoFile,controls=true)
-        h4.videoBlock__title=video.title
-        h6.videBlock__views=video.views
+    .videoBlock
+        a(href=routes.videoDetail(video.id))
+            video.videoBlock__thumbnail(src=video.videoFile, controls=false)
+            h4.videoBlock__title=video.title
+            if video.views === 1
+                h6.videoBlock__views 1 view
+            else
+                h6.videoBlock__views #{video.views} views
