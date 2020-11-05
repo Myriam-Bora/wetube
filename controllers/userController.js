@@ -1,11 +1,12 @@
 import routes from "../routes";
+import User from "../models/User";
 
 export const getJoinController = (req,res) => res.render("join",{
     pageTitle:"Join"
 
 })
 
-export const postJoinController = (req,res) =>   {
+export const postJoinController = async (req,res) =>   {
     console.log(req.body);
     const {body:{name,email,password,password2}} = req;  // const {name,email,password,password2} = req.body.name ....
     
@@ -15,6 +16,16 @@ export const postJoinController = (req,res) =>   {
             pageTitle:"Join"
         })
     }else{
+        //오로지 username과 패스워드로만 조인
+        try{
+            const user = await User({
+                name,
+                email
+            });
+            await User.register(user,password);   //유저 등록
+        }catch(error){
+            console.log(error);
+        }
         res.redirect(routes.home);
     }
 }
