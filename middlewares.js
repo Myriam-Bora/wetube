@@ -9,7 +9,8 @@ const multerVideo = multer({dest:"uploads/videos/"});
 export const localsMiddleware = (req,res,next) =>{
     res.locals.siteName = "WeTube";
     res.locals.routes = routes;
-    res.locals.user = req.user || {};  //passport는 user에 담기 객체를 request에도 넘겨준다!
+    res.locals.user = req.user || null;
+    console.log(req.user);
     next();  //local안에서 다음 함수로 넘기기위한 함수
     };
 
