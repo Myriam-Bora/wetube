@@ -9,12 +9,9 @@ const multerVideo = multer({dest:"uploads/videos/"});
 export const localsMiddleware = (req,res,next) =>{
     res.locals.siteName = "WeTube";
     res.locals.routes = routes;
-    res.locals.user = {
-        isAuthenticated: false,
-        id:1
-    };
+    res.locals.user = req.user || {};  //passport는 user에 담기 객체를 request에도 넘겨준다!
     next();  //local안에서 다음 함수로 넘기기위한 함수
-}
+    };
 
 export const uploadVideo = multerVideo.single('videoFile'); 
 //videoFile : upload form 에서 보낸 name

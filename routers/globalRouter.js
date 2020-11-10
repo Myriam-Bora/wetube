@@ -5,9 +5,8 @@ import routes from "../routes";
 
 const globalRouter = express.Router(); 
 
-// 각 controller에서 export한 객체 사용
-globalRouter.post(routes.join, postJoinController);
-globalRouter.get(routes.join, getJoinController);
+globalRouter.post(routes.join, postJoinController,postLoginController); //join하여 받은 이메일과 비번을 postLogin으로 보낸다
+globalRouter.get(routes.join, getJoinController,);
 
 globalRouter.get(routes.login, getLoginController);
 globalRouter.post(routes.login, postLoginController);
