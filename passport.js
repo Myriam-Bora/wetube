@@ -17,7 +17,15 @@ passport.use(
       )
   );
 
-passport.serializeUser(User.serializeUser());//serializeUser : 어떤 정보를 쿠키에게 주는가
-passport.deserializeUser(User.deserializeUser());//deserialize : 어느 사용자인지 어떻게 찾는가  
+  //Error: Failed to serialize user into session 해결방법!
+  //email을 username (인증값, 쿠키에서 불러오는 값)으로 사용했기 때문에 
+  //email이 private이 아닌 public(공용) 설정으로 되어 있어야 했던 것.
+  passport.serializeUser(function (user, done) {
+    done(null, user);
+    });
+    
+    passport.deserializeUser(function (user, done) {
+    done(null, user);
+    });
 
 
