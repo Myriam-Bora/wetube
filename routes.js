@@ -12,6 +12,7 @@ const USERS = "/users";
 const USER_DETAIL = "/:id";  // :id   express가 바뀌는 url임을 인식
 const EDIT_PROFILE = "/edit-profile";  // /users/edit-profile
 const CHANGE_PASSWORD = "/change-password"; // /users/change-password
+const ME = "/me";
 
 //videos
 const VIDEOS = "/videos";    //   /videos/videos
@@ -64,7 +65,8 @@ const routes = {
         }
     },
     gitHub: GITHUB,
-    githubCallback: GITHUB_CALLBACK    
+    githubCallback: GITHUB_CALLBACK,
+    me: ME  
 }
 
 export default routes;

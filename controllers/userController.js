@@ -45,8 +45,9 @@ export const githubLogin = passport.authenticate("github");
 
 export const githubLoginCallback = async (_, __, profile, cb) => {
     const {
-      _json: { id, avatar_url, name, email }
+        _json: { id, avatar_url: avatarUrl, name, email }
     } = profile;
+    console.log(profile);
     try {
       const user = await User.findOne({ email });
       if (user) {  //원래 가입한 이메일과 깃허브 이메일이 같을 경우 같은 유저로 한다
@@ -58,7 +59,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
         email,
         name,
         githubId: id,
-        avatarUrl: avatar_url
+        avatarUrl
       });
       return cb(null, newUser);
     } catch (error) {
@@ -74,6 +75,10 @@ export const logoutController = (req,res) => {
     req.logout();
     res.redirect(routes.home);
 };
+
+export const getMe = (req, res) => {
+    res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+  };
 
 export const userDetailController = (req,res) => res.render("userDetail",{
     pageTitle:"User Detail"

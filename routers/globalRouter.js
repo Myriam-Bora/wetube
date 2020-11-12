@@ -6,7 +6,8 @@ import { postJoinController,
     postLoginController, 
     logoutController,
     postGithubLogIn, 
-    githubLogin} 
+    githubLogin,
+    getMe} 
 from "../controllers/userController";
 import { onlyPrivate,onlyPublic  } from "../middlewares";
 import { homeController, searchController } from "../controllers/videoController";
@@ -32,5 +33,7 @@ globalRouter.get(
 );
 
 globalRouter.get(routes.search, searchController);
+
+globalRouter.get(routes.me, getMe);
 
 export default globalRouter;
