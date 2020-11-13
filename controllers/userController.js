@@ -92,7 +92,7 @@ export const getMe = (req, res) => {
     }
   };
 
-export const editProfileController = (req,res) => res.render("editProfile",{
+export const getEditProfileController  = (req,res) => res.render("editProfile",{
     pageTitle:"Edit Profile"
 })
 
