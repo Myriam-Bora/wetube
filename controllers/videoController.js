@@ -46,10 +46,11 @@ export const postUploadController = async(req,res) => {
     const newVideo = await Video.create({   // Video : 모델에서 만든 스키마
         fileUrl:path,
         title,
-        description
+        description,
+        creator: req.user.id
     });
-    console.log(newVideo); 
-
+    req.user.videos.push(newVideo.id);
+    req.user.save();
     res.redirect(routes.videoDetail(newVideo.id));   //id는 자동으로 만들어진다
 }
 
@@ -59,7 +60,8 @@ export const videoDetailController = async (req,res) =>{
     //   /:id 으로 된 url에서 온 값은 params을 사용
 
     try{
-        const video = await Video.findById(id);    
+        const video = await Video.findById(id).populate("creator");
+        console.log(video);   
         res.render("videoDetail", {pageTitle:video.title, video})  //비디오 타이틀로 페이지이름을 수정
     }catch(error){
     res.redirect(routes.home)

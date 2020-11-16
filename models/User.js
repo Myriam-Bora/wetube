@@ -6,7 +6,19 @@ const UserSchema = new mongoose.Schema({
   email: String,
   avatarUrl: String,
   facebookId: Number,
-  githubId: Number
+  githubId: Number,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ],
+  videos: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Video"
+    }
+  ]
 });
 
 //나중에 아이디를 변경하거나 하는 문제가 생기는 경우가 있어 알아서 

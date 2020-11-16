@@ -22,7 +22,11 @@ const VideoSchema = new mongoose.Schema({
     comments:[{
         type:mongoose.Schema.Types.ObjectId,   //다른 스키마의 타입을 사용
         ref:"Comment"                        //해당 되는 스키마의 아이디
-    }]
+    }],
+    creator: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
 });
 
 //위의 스키마를 이용해 Model 만들기
