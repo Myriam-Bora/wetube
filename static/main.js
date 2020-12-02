@@ -255,8 +255,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var recorderContainer = document.getElementById("jsRecordContainer");
 var recordBtn = document.getElementById("jsRecordBtn");
 var videoPreview = document.getElementById("jsVideoPreview");
+var streamObject;
 
-var startRecording = /*#__PURE__*/function () {
+var handleVideoData = function handleVideoData(event) {
+  console.log(event);
+};
+
+var startRecording = function startRecording() {
+  var videoRecorder = new MediaRecorder(streamObject);
+  videoRecorder.start();
+  videoRecorder.addEventListener("dataavailable", handleVideoData);
+};
+
+var getVideo = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
     var stream;
     return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -281,30 +292,38 @@ var startRecording = /*#__PURE__*/function () {
             videoPreview.muted = true; //녹화하면서 내 목소리 들리지 않게 하기
 
             videoPreview.play();
-            _context.next = 13;
+            recordBtn.innerHTML = "Stop recording";
+            streamObject = stream;
+            startRecording();
+            _context.next = 15;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 12:
+            _context.prev = 12;
             _context.t0 = _context["catch"](0);
             recordBtn.innerHTML = "☹️ Cant record";
-            recordBtn.removeEventListener("click", startRecording);
 
-          case 13:
+          case 15:
+            _context.prev = 15;
+            recordBtn.removeEventListener("click", getVideo);
+            return _context.finish(15);
+
+          case 18:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 12, 15, 18]]);
   }));
 
-  return function startRecording() {
+  return function getVideo() {
     return _ref.apply(this, arguments);
   };
 }();
 
 function init() {
   recordBtn.addEventListener("click", startRecording);
+  recordBtn.addEventListener("click", getVideo);
 }
 
 if (recorderContainer) {
