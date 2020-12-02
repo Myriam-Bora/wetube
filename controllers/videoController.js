@@ -50,7 +50,7 @@ export const postUploadController = async(req,res) => {
         creator: req.user.id
     });
     req.user.videos.push(newVideo.id);
-    req.user.save();
+    req.user.save(); 
     res.redirect(routes.videoDetail(newVideo.id));   //id는 자동으로 만들어진다
 }
 
