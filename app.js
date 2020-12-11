@@ -9,6 +9,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import {localsMiddleware} from "./middlewares";
 import globalRouter from "./routers/globalRouter";
+import apiRouter from "./routers/apiRouter";
 import "./passport";
 import userRouter from "./routers/userRouter";   
 import videoRouter from "./routers/videoRouter"; 
@@ -55,5 +56,6 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);   // / , /login... 등..
 app.use(routes.users, userRouter);    // /users/userDetail 등
 app.use(routes.videos, videoRouter);  // /videos/deleteVideo 등
+app.use(routes.api, apiRouter);
 
 export default app;
