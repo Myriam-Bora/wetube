@@ -1,16 +1,20 @@
 # Youtube Clone 📹 ( ⛔ 구현중...)
 
-Cloning Youtube with VanillaJS and NodeJS
+Cloning Youtube with React and NodeJS
 
 ## 주요기능
 
-    ✅ 깃허브, 페이스북 로그인
+    ✅ 클라이언트(React) / 서버(Node)
+    
+    ✅ Ant Design
+
+    ✅ 깃허브, 카카오톡 로그인
     
     ✅ 영상 CRUD
       
-    ✅ 영상 녹화, 업로드
+    ✅ 댓글, 좋아요 기능
     
-    ✅ 유저 프로필
+
     
 ## 사용언어 / 도구
 
