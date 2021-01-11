@@ -6,7 +6,7 @@ Cloning Youtube with React and NodeJS
 
     ✅ 클라이언트(React) / 서버(Node)
     
-    ✅ Ant Design
+    ✅ 컴포넌트 디자인 : Ant Design
 
     ✅ 깃허브, 카카오톡 로그인
     
